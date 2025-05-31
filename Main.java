@@ -5,7 +5,7 @@ public class Main {
     public static void main(String[] args) throws UnsupportedEncodingException {
         List<Recipe> recipes = Recipeloader.loadRecipes("recipes.txt"); // レシピを読み込む
 
-        Scanner scanner = new Scanner(new InputStreamReader(System.in, "UTF-8"));
+        Scanner scanner = new Scanner(new InputStreamReader(System.in, "Shift_JIS"));
         Set<String> userIngredients = new HashSet<>();
         System.out.println("持っている食材を入力してください（カンマ区切り、終了は'end'）：");
         while (true) {

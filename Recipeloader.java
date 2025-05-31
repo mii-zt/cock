@@ -24,11 +24,6 @@ public class Recipeloader {
         } catch (IOException e) {
             System.err.println("ファイル読み込みエラー: " + e.getMessage());
         }
-        System.out.println("読み込みレシピ数: " + recipes.size());
-        // レシピの内容を表示
-        for (Recipe recipe : recipes) {
-            System.out.println("レシピ名: " + recipe.getName() + ", 食材: " + recipe.getIngredients());
-        }
         return recipes;
     }
 }

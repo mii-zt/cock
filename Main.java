@@ -6,8 +6,21 @@ public class Main {
         List<Recipe> recipes = Recipeloader.loadRecipes("recipes.txt"); // レシピを読み込む
 
         Scanner scanner = new Scanner(new InputStreamReader(System.in, "Shift_JIS"));
+
+        Set<String> recentMeals = new HashSet<>();
+        System.out.println("最近食べた料理を入力してください（最大６品目、カンマ区切り、終了は'end'）");
+        while (recentMeals.size() < 6) {
+            String input = scanner.nextLine().trim();
+            if (input.equals("end"))
+                break;
+            String[] meals = input.split(",");
+            for (String meal : meals) {
+                recentMeals.add(meal.trim()); // 最近食べた料理セットに追加
+            }
+        }
+
         Set<String> userIngredients = new HashSet<>();
-        System.out.println("持っている食材を入力してください（カンマ区切り、終了は'end'）：");
+        System.out.println("持っている食材を入力してください（カンマ区切り、終了は'end'）");
         while (true) {
             String input = scanner.nextLine().trim();
             if (input.equals("end"))
@@ -18,13 +31,10 @@ public class Main {
             }
 
         }
-        System.out.println("現在の持っている食材: ");
-        for (String ing : userIngredients) {
-            System.out.println("- " + ing);
-        }
 
-        System.out.println("\n作れる料理:");
-        List<Recipe> cookable = Recipecheck.checkCookableRecipes(recipes, new ArrayList<>(userIngredients));
+        System.out.println("\n料理名と必要な食材を表示します。");
+        List<Recipe> cookable = Recipecheck.checkCookableRecipes(recipes, new ArrayList<>(userIngredients),
+                recentMeals);
         if (cookable.isEmpty()) {
             System.out.println("条件に合う料理はありません。");
         } else {

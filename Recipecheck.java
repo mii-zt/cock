@@ -1,11 +1,15 @@
 import java.util.*;
 
 public class Recipecheck {
-    public static List<Recipe> checkCookableRecipes(List<Recipe> allRecipes, List<String> userIngredients) {
+    public static List<Recipe> checkCookableRecipes(List<Recipe> allRecipes, List<String> userIngredients,
+            Set<String> recentMeals) {
         List<Recipe> cookable = new ArrayList<>(); // つくれるレシピのリスト
         for (Recipe recipe : allRecipes) {
             boolean match = false;
             // レシピの食材がユーザーの持っている食材に含まれているかチェック
+            if (recentMeals.contains(recipe.getName())) {
+                continue; // 最近食べた料理はスキップ
+            }
             for (String ingredient : recipe.getIngredients()) {
                 if (userIngredients.contains(ingredient)) {
                     match = true;

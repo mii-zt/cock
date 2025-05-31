@@ -27,6 +27,8 @@ public class Recipecheck {
                 cookable.add(necessary); // つくれるレシピのリストに追加
             }
         }
+        // 必要な食材の数でソート
+        cookable.sort(Comparator.comparingInt(r -> r.getIngredients().size()));
         return cookable;
     }
 }

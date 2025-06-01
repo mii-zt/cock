@@ -32,9 +32,21 @@ public class Main {
 
         }
 
+        Set<String> allergy = new HashSet<>();
+        System.out.println("アレルギーのある食材を入力してください（カンマ区切り、終了は'end'）");
+        while (true) {
+            String input = scanner.nextLine().trim();
+            if (input.equals("end"))
+                break;
+            String[] allergyIngredients = input.split(",");
+            for (String allergen : allergyIngredients) {
+                allergy.add(allergen.trim()); // アレルギー食材セットに追加
+            }
+        }
+
         System.out.println("\n料理名と必要な食材を表示します。");
         List<Recipe> cookable = Recipecheck.checkCookableRecipes(recipes, new ArrayList<>(userIngredients),
-                recentMeals);
+                recentMeals, allergy);
         if (cookable.isEmpty()) {
             System.out.println("条件に合う料理はありません。");
         } else {

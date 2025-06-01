@@ -2,7 +2,7 @@ import java.util.*;
 
 public class Recipecheck {
     public static List<Recipe> checkCookableRecipes(List<Recipe> allRecipes, List<String> userIngredients,
-            Set<String> recentMeals) {
+            Set<String> recentMeals, Set<String> allergy) {
         List<Recipe> cookable = new ArrayList<>(); // つくれるレシピのリスト
         for (Recipe recipe : allRecipes) {
             boolean match = false;
@@ -11,6 +11,10 @@ public class Recipecheck {
                 continue; // 最近食べた料理はスキップ
             }
             for (String ingredient : recipe.getIngredients()) {
+                if (allergy.contains(ingredient)) {
+                    match = false; // アレルギー食材が含まれている場合はスキップ
+                    break;
+                }
                 if (userIngredients.contains(ingredient)) {
                     match = true;
                     break;

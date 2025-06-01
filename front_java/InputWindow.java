@@ -7,13 +7,14 @@ import java.util.List;
 public class InputWindow extends JDialog {
     private JTextField textField1;
     private JTextField textField2;
+    private JTextField textField3; // アレルギー食材の入力フィールド
     private MainWindow parentWindow;
 
     public InputWindow(MainWindow parent) {
         super(parent, "入力ウィンドウ", true); // モーダルダイアログ
         this.parentWindow = parent;
 
-        setSize(350, 250);
+        setSize(400, 350);
         setLocationRelativeTo(parent);
         setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 
@@ -32,7 +33,7 @@ public class InputWindow extends JDialog {
         // 入力パネル
         JPanel inputPanel = new JPanel(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(5, 5, 5, 5);
+        gbc.insets = new Insets(10, 10, 10, 10);
 
         // 1つ目のテキストボックス
         gbc.gridx = 0;
@@ -61,6 +62,19 @@ public class InputWindow extends JDialog {
         textField2 = new JTextField(15);
         inputPanel.add(textField2, gbc);
 
+        // アレルギー食材の入力フィールド
+        gbc.gridx = 0;
+        gbc.gridy = 4;
+        gbc.fill = GridBagConstraints.NONE;
+        gbc.weightx = 0;
+        inputPanel.add(new JLabel("アレルギー（カンマ区切りで入力)"), gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 5;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.weightx = 1.0;
+        textField3 = new JTextField(15);
+        inputPanel.add(textField3, gbc);
         add(inputPanel, BorderLayout.CENTER);
 
         // ボタンパネル
@@ -96,6 +110,7 @@ public class InputWindow extends JDialog {
     private void processInput() {
         String likeString = textField1.getText().trim();
         String dislikeString = textField2.getText().trim();
+        String allergyString = textField3.getText().trim(); // アレルギー食材の入力
 
         // 入力検証
         if (likeString.isEmpty()) {
@@ -113,7 +128,8 @@ public class InputWindow extends JDialog {
         // 結果を作成
         String[] likedIngredients = likeString.split(",");
         String[] dislikedIngredients = dislikeString.split(",");
-        List<Recipe> recommendedList = Cockservice.recommend(likedIngredients, dislikedIngredients);
+        String[] allergy = allergyString.split(",");
+        List<Recipe> recommendedList = Cockservice.recommend(likedIngredients, dislikedIngredients, allergy);
         if (recommendedList == null || recommendedList.isEmpty()) {
             JOptionPane.showMessageDialog(this, "お勧めの料理が見つかりませんでした。", "結果なし", JOptionPane.INFORMATION_MESSAGE);
             return;

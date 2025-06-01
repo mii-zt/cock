@@ -8,11 +8,11 @@ import java.awt.event.ActionListener;
 public class MainWindow extends JFrame {
     private JLabel resultLabel1;
     private JLabel resultLabel2;
-    
+
     public MainWindow() {
         setTitle("おうちシェフ");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(600,600);
+        setSize(600, 600);
         setLocationRelativeTo(null);
 
         // レイアウト設定
@@ -22,7 +22,7 @@ public class MainWindow extends JFrame {
         JLabel titleLabel = new JLabel("本日の献立は？", JLabel.CENTER);
         titleLabel.setFont(new Font("MS Gothic", Font.BOLD, 18));
         add(titleLabel, BorderLayout.NORTH);
-        
+
         // お勧め表示エリア
         JPanel resultPanel = new JPanel();
         resultPanel.setLayout(new BoxLayout(resultPanel, BoxLayout.Y_AXIS)); // 縦並び
@@ -30,13 +30,13 @@ public class MainWindow extends JFrame {
         // 献立ラベル（resultLabel1）
         resultLabel1 = new JLabel();
         resultLabel1.setFont(new Font("MS Gothic", Font.PLAIN, 14));
-        TitledBorder border1 = BorderFactory.createTitledBorder("食材");
+        TitledBorder border1 = BorderFactory.createTitledBorder("おすすめの献立と必要な食材");
         border1.setTitleJustification(TitledBorder.LEFT); // 左上にタイトル
         resultLabel1.setBorder(border1);
         resultLabel1.setAlignmentX(Component.LEFT_ALIGNMENT); // 左揃え
         resultPanel.add(resultLabel1);
 
-         // 栄養情報ラベル（resultLabel2）
+        // 栄養情報ラベル（resultLabel2）
         resultLabel2 = new JLabel();
         resultLabel2.setFont(new Font("MS Gothic", Font.PLAIN, 14));
         TitledBorder border2 = BorderFactory.createTitledBorder("献立");
@@ -46,13 +46,13 @@ public class MainWindow extends JFrame {
         resultPanel.add(resultLabel2);
 
         // パネルを中央に追加
-       add(resultPanel, BorderLayout.CENTER);
-        
+        add(resultPanel, BorderLayout.CENTER);
+
         // ボタンパネル
         JPanel buttonPanel = new JPanel();
         JButton openWindowButton = new JButton("入力ウィンドウを開く");
         openWindowButton.setFont(new Font("MS Gothic", Font.PLAIN, 14));
-        
+
         // ボタンのアクションリスナー
         openWindowButton.addActionListener(new ActionListener() {
             @Override

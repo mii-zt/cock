@@ -121,7 +121,7 @@ public class InputWindow extends JDialog {
         for (Recipe r : recommendedList) {
             resultBuilder.append(r.getName()).append(":");
             for (String ing : r.getIngredients()) {
-                resultBuilder.append(ing).append(" ");
+                resultBuilder.append(ing).append("\n");
             }
             resultBuilder.append("\n");
         }
@@ -131,7 +131,7 @@ public class InputWindow extends JDialog {
         // コンソールにも表示
         System.out.println("--- おすすめの料理 ---");
         System.out.println(result);
-      　integration-test
+
         // 成功メッセージを表示
         JOptionPane.showMessageDialog(this, "ありがとうございます。お勧めを表示します", "成功", JOptionPane.INFORMATION_MESSAGE);
 

@@ -117,6 +117,14 @@ public class InputWindow extends JDialog {
             
         // メインウィンドウに結果を送信
         parentWindow.updateResult1(result1);
+
+        String[] result2 = {
+         "今日のおすすめ：肉じゃが",
+         "栄養バランス：良好",
+         "カロリー：約500kcal"
+        };
+        
+        parentWindow.updateResult2(result2);
             
         // 成功メッセージを表示
         JOptionPane.showMessageDialog(this, "ありがとうございます。お勧めを表示します", "成功", JOptionPane.INFORMATION_MESSAGE);

@@ -25,7 +25,7 @@ public class InputWindow extends JDialog {
 
         // タイトル
         JLabel titleLabel = new JLabel("入力してください", JLabel.CENTER);
-        titleLabel.setFont(new Font("Arial", Font.BOLD, 16));
+        titleLabel.setFont(new Font("MS Gothic", Font.BOLD, 16));
         titleLabel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         add(titleLabel, BorderLayout.NORTH);
 
@@ -108,6 +108,7 @@ public class InputWindow extends JDialog {
             return;
         }
 
+
         // 結果を作成
         String[] likedIngredients = likeString.split(",");
         String[] dislikedIngredients = dislikeString.split(",");
@@ -130,6 +131,7 @@ public class InputWindow extends JDialog {
         // コンソールにも表示
         System.out.println("--- おすすめの料理 ---");
         System.out.println(result);
+      　integration-test
         // 成功メッセージを表示
         JOptionPane.showMessageDialog(this, "ありがとうございます。お勧めを表示します", "成功", JOptionPane.INFORMATION_MESSAGE);
 

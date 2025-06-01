@@ -108,7 +108,6 @@ public class InputWindow extends JDialog {
             return;
         }
 
-
         // 結果を作成
         String[] likedIngredients = likeString.split(",");
         String[] dislikedIngredients = dislikeString.split(",");
@@ -133,7 +132,6 @@ public class InputWindow extends JDialog {
         // コンソールにも表示
         System.out.println("--- おすすめの料理 ---");
         System.out.println(result);
-
         // 成功メッセージを表示
         JOptionPane.showMessageDialog(this, "ありがとうございます。お勧めを表示します", "成功", JOptionPane.INFORMATION_MESSAGE);
 

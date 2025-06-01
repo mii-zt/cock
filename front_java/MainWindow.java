@@ -71,11 +71,11 @@ public class MainWindow extends JFrame {
     }
 
     // 結果を更新するメソッド
-    public void updateResult1(String result) {
+    public void updateResult(String result) {
         resultLabel1.setText(result);
     }
 
-    public void updateResult2(String[] resultParts) {
+    public void updateResult(String[] resultParts) {
         if (resultParts == null || resultParts.length == 0) {
             resultLabel2.setText("結果がありません");
             return;

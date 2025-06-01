@@ -38,9 +38,10 @@ public class InputWindow extends JDialog {
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.anchor = GridBagConstraints.WEST;
-        inputPanel.add(new JLabel("食べたいもの（食材）"), gbc);
+        inputPanel.add(new JLabel("持っている食材(カンマ区切りで入力)"), gbc);
 
-        gbc.gridx = 1;
+        gbc.gridx = 0;
+        gbc.gridy = 1;
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.weightx = 1.0;
         textField1 = new JTextField(15);
@@ -48,12 +49,13 @@ public class InputWindow extends JDialog {
 
         // 2つ目のテキストボックス
         gbc.gridx = 0;
-        gbc.gridy = 1;
+        gbc.gridy = 2;
         gbc.fill = GridBagConstraints.NONE;
         gbc.weightx = 0;
-        inputPanel.add(new JLabel("食べたくないもの（食材）"), gbc);
+        inputPanel.add(new JLabel("最近食べた料理（最大６品まで、カンマ区切りで入力)"), gbc);
 
-        gbc.gridx = 1;
+        gbc.gridx = 0;
+        gbc.gridy = 3;
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.weightx = 1.0;
         textField2 = new JTextField(15);

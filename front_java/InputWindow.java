@@ -118,13 +118,15 @@ public class InputWindow extends JDialog {
             return;
         }
         StringBuilder resultBuilder = new StringBuilder();
+        resultBuilder.append("<html>");
         for (Recipe r : recommendedList) {
             resultBuilder.append(r.getName()).append(":");
             for (String ing : r.getIngredients()) {
-                resultBuilder.append(ing).append("\n");
+                resultBuilder.append(ing).append("、");
             }
-            resultBuilder.append("\n");
+            resultBuilder.append("<br>");
         }
+        resultBuilder.append("</html>");
         String result = resultBuilder.toString();
         // メインウィンドウに結果を送信
         parentWindow.updateResult(result);

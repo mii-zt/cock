@@ -107,16 +107,7 @@ public class InputWindow extends JDialog {
             return;
         }
 
-        String[] likeStrings = likeString.split("[,、]\\s*");
-        String[] dislikeStrings = dislikeString.split("[,、]\\s*");
-
-        String likeList = String.join("、", likeStrings);
-        String dislikeList = String.join("、", dislikeStrings);
-
-        String result1 = String.format("%sを使い、%sを避けた料理をおすすめします。", likeList, dislikeList);
-            
-        // メインウィンドウに結果を送信
-        parentWindow.updateResult1(result1);
+        
             
         // 成功メッセージを表示
         JOptionPane.showMessageDialog(this, "ありがとうございます。お勧めを表示します", "成功", JOptionPane.INFORMATION_MESSAGE);
